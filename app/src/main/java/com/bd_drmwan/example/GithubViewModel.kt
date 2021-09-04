@@ -12,10 +12,12 @@ class GithubViewModel: ViewModel() {
     var listUser = MutableLiveData<List<User>>()
     var detailUser = MutableLiveData<DetailUser>()
 
+    private val apiKey = BuildConfig.API_KEY
+
     fun searchUsers(username: String) {
         isLoading.value = true
         val service = NetworkService.getApiClient()?.create(GithubService::class.java)
-        val call = service?.searchUser(username = username)
+        val call = service?.searchUser(apiKey, username)
         call?.enqueue(object : Callback<Users> {
             override fun onResponse(call: Call<Users>, response: Response<Users>) {
                 isLoading.value = false
@@ -32,7 +34,7 @@ class GithubViewModel: ViewModel() {
     fun getDetailUser(username: String) {
         isLoading.value = true
         val service = NetworkService.getApiClient()?.create(GithubService::class.java)
-        val call = service?.getDetailUser(username = username)
+        val call = service?.getDetailUser(apiKey, username)
         call?.enqueue(object : Callback<DetailUser> {
             override fun onResponse(call: Call<DetailUser>, response: Response<DetailUser>) {
                 isLoading.value = false
@@ -48,7 +50,7 @@ class GithubViewModel: ViewModel() {
     fun getFollowersUser(username: String) {
         isLoadingTab.value = true
         val service = NetworkService.getApiClient()?.create(GithubService::class.java)
-        val call = service?.getFollowersUser(username = username)
+        val call = service?.getFollowersUser(apiKey, username)
         call?.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 isLoadingTab.value = false
@@ -65,7 +67,7 @@ class GithubViewModel: ViewModel() {
     fun getFollowingUser(username: String) {
         isLoadingTab.value = true
         val service = NetworkService.getApiClient()?.create(GithubService::class.java)
-        val call = service?.getFollowingUser(username = username)
+        val call = service?.getFollowingUser(apiKey, username)
         call?.enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 isLoadingTab.value = false

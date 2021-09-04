@@ -10,25 +10,25 @@ interface GithubService {
 
     @GET("search/users")
     fun searchUser(
-        @Header("Authorization") auth: String = "YOUR API KEY",
+        @Header("Authorization") auth: String,
         @Query("q") username: String
     ): Call<Users>
 
     @GET("users/{username}")
     fun getDetailUser(
-        @Header("Authorization") auth: String = "YOUR API KEY",
+        @Header("Authorization") auth: String,
         @Path("username") username: String
     ): Call<DetailUser>
 
     @GET("users/{username}/followers")
     fun getFollowersUser(
-        @Header("Authorization") auth: String = "YOUR API KEY",
+        @Header("Authorization") auth: String,
         @Path("username") username: String
     ): Call<List<User>>
 
     @GET("users/{username}/following")
     fun getFollowingUser(
-        @Header("Authorization") auth: String = "YOUR API KEY",
+        @Header("Authorization") auth: String,
         @Path("username") username: String
     ): Call<List<User>>
 }
