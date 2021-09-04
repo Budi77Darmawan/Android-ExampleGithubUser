@@ -25,7 +25,7 @@ class ListUserAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.apply {
-                tvName.text = user.name
+                tvUsername.text = user.username
                 tvUserType.text = user.accountType
 
                 Glide.with(root.context)

@@ -15,12 +15,66 @@
         app:title="Users Github"
         app:titleTextColor="@color/white" />
 
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_search"
+        android:backgroundTint="@color/black"
+        android:iconifiedByDefault="false"
+        android:imeOptions="actionSearch"
+        android:queryHint="Username"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingVertical="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/search_bar" />
+
+    <ImageView
+        android:id="@+id/img_message"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_search"
+        app:layout_constraintBottom_toTopOf="@id/tv_message"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_message"
+        tools:text="Budi Darmawan" />
+
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/purple_500"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
